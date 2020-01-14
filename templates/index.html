@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<title> Home Page </title>
+		<style>	
+			img{
+				width: 200px;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		{% if uloga == '' %}
+			<a href="/login">Login</a>
+			<a href="/registracija">Restracija</a>
+		{% endif %}
+	
+		{% if uloga != '' %}
+			<a href="/logout">Logout</a>
+			<a href="/update_user">Update</a>
+		
+		{% endif %}
+
+		<div class="container">
+			{% for p in proizvodi %}
+			{% if uloga == '' %}
+			<td>{{k['username']}}</td>
+			<td>{{k['usertype']}}</td>
+			{% endif %}
+			{% if uloga != '' %}
+				<div class="proizvod">
+					<h1>{{p["naziv"]}}</h1>
+					<p>Cena: {{p['cena']}}</p>
+					<a href="/update_proizvod/{{p['_id']}}"> <button>Update Proizvoda</button></a>
+					<a href="/delete_proizvod/{{p['_id']}}"><button>Obrisi proizvod</button></a>
+					<img src="..{{p['slika']}}" alt="">
+					{% endif %}
+					{% if uloga == "admin" %}
+					<h1>{{p["naziv"]}}</h1>
+					<p>Cena: {{p['cena']}}</p>
+					<a href="/update_proizvod/{{p['_id']}}"><button> Update Proizvoda</button></a>
+					<a href="/delete_proizvod/{{p['_id']}}"><button>Obrisi proizvod</button></a>
+					<img src="..{{p['slika']}}" alt="">
+					{% endif %}
+				</div>
+			{% endfor %}
+
+			<table>
+				<tr>
+					<td>Username</td>
+					{% if uloga == "admin" %}
+					<td>Update</td>
+					<td>Delete</td>
+					{% endif %}
+				</tr>
+				{% for k in korisnici %}
+				<tr>
+				{% if uloga == '' %}
+					<td>{{k['username']}}</td>
+					<td>{{k['type']}}</td>
+					{% endif %}
+				{% if uloga != '' %}
+					<td><a href="/profili/{{k['username']}}">{{k['username']}}</a></td>
+					<td>{{k['usertype']}}</td>
+					{% endif %}
+				{% if uloga == "admin" %}
+					<td><a href="/update_user/{{k['username']}}">Update User</a></td>
+					<td><a href="/delete_korisnik/{{k['username']}}">Delete User</a></td>
+					{% endif %}
+				{% if uloga == "seler" %}
+				<td><a href="/update_user/{{k['username']}}">Update User</a></td>
+				<td><a href="/delete_korisnik/{{k['username']}}">Delete User</a></td>
+					{% endif %}
+				</tr>
+				{% endfor %}
+				{% if korisnik['type']|string() == 'admin' %}
+				<table border="0">
+					{% for k in korisnici %}
+							<tr>
+								<td>{{loop.index}}.</td>
+								<td><img src="{{k['slika']}}" alt=""><br><p>{{k['username']}}</p></td>
+								<td><a href="/update_user/{{k['_id']}}"><button>Izmeni</button></a></td>
+								<td><a href="/delete_korisnik/{{k['_id']}}"><button>Obrisi</button></a></td>
+							</tr>
+					{% endfor %}
+				</table>
+				{% endif %}
+
+			</table>
+		</div>
+	</body>
+</html>
+

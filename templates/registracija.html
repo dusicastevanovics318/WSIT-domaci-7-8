@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title> Register Page </title>
+	</head>
+	<body>
+		<form action = '/registracija' method = 'POST'>
+			Korisnicko ime <input type = 'text' name = 'username' /> </br>
+			Email: <input type = 'text' name = 'email' /> </br>
+			
+            Password: <input type = 'password' name = 'password' /></br>
+            Ponovi password<input type="password" placeholder="Repeat Password" name="psw-repeat" required><br>
+			<select name="pol">
+				<option value="muski">Muski</option>
+				<option value="zenski">Zenski</option>
+            </select> </br>
+            Godina rodjenja<input type="number" name="godinaRodjenja" /><br>
+			<select name="usertype">
+				<option value="admin">Admin</option>
+				<option value="seler">Prodavac</option>
+            </select> </br>
+            Izaberi sliku<input type="file" name="slika"/><br>
+			<input type = 'submit' value = 'Registruj se!' /></br>
+		</form>
+	</body>
+</html>

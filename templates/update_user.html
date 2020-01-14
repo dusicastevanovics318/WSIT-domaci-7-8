@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <form action="/update_user/{{id}}" method="POST" enctype="multipart/form-data">
+      <h1>{{k["username"]}}</h1>
+      <p>Email: <input type='text' name='email'/></p>
+      <p>Password: <input type='password' name='password'/></p>
+      <p>Confirm password: <input type='password' name='psw-repeat'/></p>
+      <p>Pol: <select name="pol"><option value="muski">Muski</option><option value="zenski">Zenski</option></select> </p>
+      <p>Year of birth: <input type='text' name='godinaRodjenja'/></p><select name="type"><option value="admin">admin</option><option value="seler">seler</option></select> </p>
+      <p>Picture: <input type="file" name="slika"></p>
+      <input type='submit' value='Izmeni!'/></p>
+  </form>
+</body>
+
+
+</html>

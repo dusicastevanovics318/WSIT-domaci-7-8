@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    {% for user in users %}
+    <p>{{user.username}}</p>
+    <form action="./update_proizvod/{{id}}" method="post" enctype="multipart/form-data">
+        <p>Naziv:  <input type="text" name="naziv" value="{{proizvodi.naziv}}"></p>
+        <p>Kolicina proizvoda  <input type="number" name="kolicina" value="{{proizvodi.kolicina}}"></p>
+        <p>Cena: <input type="number" name="cena" value="{{proizvodi.cena}}"></p>
+        <p>Slika <input type="file" name="slika" ></p>
+        <p><input type="submit" name="Update Proizvod"></p>
+    </form>
+  {% endfor %}
+</body>
+</html>
